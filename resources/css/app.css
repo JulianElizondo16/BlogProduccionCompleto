@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+[x-cloak] {
+    display: none;
+}
+
+.first-image {
+    grid-column: span 2;
+    width: 100%;
+}
