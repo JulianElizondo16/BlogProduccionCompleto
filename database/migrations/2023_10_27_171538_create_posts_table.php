@@ -15,11 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('slug');
-            $table->text('extract');
-            $table->longText('body');
+            $table->text('extract')->nullable();
+            $table->longText('body')->nullable();
             //Con el enum se puede decir que numeros puede tener ese campo.
             //En este caso estamos diciendo que los valores son 1 y 2 y que por default sea 1
-            $table->enum('status',[1, 2])->default(1);
+            $table->enum('status', [1, 2])->default(1);
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('category_id');
             //Ahora a esos campos se les va a agregar una restriccion de Foreign key

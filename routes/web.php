@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\EditorController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ComentariosController;
@@ -17,30 +18,33 @@ Route::get('/', HomeController::class)->name('home');
 
 //ACA ESTAMOS LLAMANDO A TODOS LOS CONTROLADORES DE COMENTARIOS CONTROLLER
 
-Route::controller(ComentariosController::class)->group(function(){
+Route::controller(ComentariosController::class)->group(function () {
 
-Route::get('comentarios', 'index')->name('comentarios.home');
+    Route::get('comentarios', 'index')->name('comentarios.home');
 
-Route::post('comentarios', 'GenerarComentario')->name('comentarios.generar');
+    Route::post('comentarios', 'GenerarComentario')->name('comentarios.generar');
 
-//muestra el Comentario a detalle
-Route::get('comentarios/{comentario}', 'show')->name('comentarios.show');
+    //muestra el Comentario a detalle
+    Route::get('comentarios/{comentario}', 'show')->name('comentarios.show');
 
-//EDITAR EL Comentario
-Route::get('comentarios/{comentario}/edit', 'edit') ->name('comentarios.edit');
+    //EDITAR EL Comentario
+    Route::get('comentarios/{comentario}/edit', 'edit')->name('comentarios.edit');
 
-//PARA GUARDAR LOS DATOS
-Route::put('comentarios/{comentario}', 'update')->name('comentarios.update');
+    //PARA GUARDAR LOS DATOS
+    Route::put('comentarios/{comentario}', 'update')->name('comentarios.update');
 
-//Eliminar DATOS DE LA TABLA
-Route::delete('comentarios/{comentario}','destroy')->name('comentarios.delete');
+    //Eliminar DATOS DE LA TABLA
+    Route::delete('comentarios/{comentario}', 'destroy')->name('comentarios.delete');
 });
 
 //ACA VAMOS A LLAMAR A LOS POST QUE ESTEMOS HACIENDO NUEVOS 30-10-23
 Route::get('posts', [PostController::class, 'index'])->name('post.index');
 Route::get('posts/{post}', [PostController::class, 'show'])->name('posts.show');
 Route::get('category/{category}', [PostController::class, 'category'])->name('posts.category');
-Route::get('tag/{tag}',[PostController::class, 'tag'])->name('posts.tag');
+Route::get('tag/{tag}', [PostController::class, 'tag'])->name('posts.tag');
+
+
+/* CONTROLADOR PARA CKEDITOR */
 
 
 

@@ -23,14 +23,13 @@ class DatabaseSeeder extends Seeder
         //El metodo makeDirectory lo que hace es crear un directorio llamado post o mejor dicho una carpeta 
         Storage::makeDirectory('public/posts');
 
-        
+        $this->call(RoleSeeder::class);
+
         $this->call(UserSeeder::class);
         Category::factory(4)->create();
         Tag::factory(8)->create();
         //Pero queremos que por cada post que se cree se genere una imagen y almacene la informacion de la imagen en la tabla url
         //Vamos a crear un nuevo seeder llamado PostSeeder
         $this->call(PostSeeder::class);
-
-
     }
 }
